@@ -33,31 +33,48 @@
     
 </style> -->
 <template>
-    <div class="row justify-content-md-center">
-      <div class="col-md-6">
-        <div class="card">
-          <div class="card-header">Login</div>
-          <div class="card-body">
-            <form>
-              <div class="form-group">
-                <label for="email">Email address</label>
-                <input type="email" class="form-control" placeholder="Email..">
-              </div>
-              <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" class="form-control" placeholder="Password..">
-              </div>
-              <button type="submit" class="btn btn-primary">Submit</button>
-              <div class="social-icons">
-                <ul>
-                    <li><a href="#"><i class="fa fa-google"></i></a></li>
-                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                </ul>
+  <div class="row justify-content-md-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">Login</div>
+        <div class="card-body">
+          <form>
+            <div class="form-group">
+              <label for="email">Email address</label>
+              <input type="email" class="form-control" placeholder="Email..">
             </div>
-            </form>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" class="form-control" placeholder="Password..">
+            </div>
+            <router-link to="/Beranda" class="menus" @click="beranda()">
+            <button type="submit" class="btn btn-primary">Submit</button>
+              </router-link>
+            <div class="social-icons">
+              <ul>
+                  <li><a href="#"><i class="fa fa-google"></i></a></li>
+                  <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                  <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+              </ul>
           </div>
+          </form>
         </div>
       </div>
     </div>
-  </template>
+  </div>
+</template>
+
+<script>
+export default {
+methods: {
+beranda() {
+  if (this.items.length < 3) {
+    this.items.push('Beranda')
+  }
+  else {
+    this.items.shift()
+    this.items.push('Beranda')
+  }
+}}}
+
+</script>

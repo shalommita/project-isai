@@ -1,6 +1,7 @@
 <template>
   <v-app>
     <LeftSide/>
+    <!-- <router-view></router-view> -->
   </v-app>
 </template>
 
