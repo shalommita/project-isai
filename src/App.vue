@@ -6,17 +6,13 @@
 
 <script>
 import Dashboard from './components/MenuDashboard.vue'
-
 export default {
   name: 'App',
-
   components: {
     Dashboard
   },
-
   data: () => ({
     //
   }),
-
 }
 </script>
