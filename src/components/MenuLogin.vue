@@ -1,79 +1,65 @@
-<!-- <template>
-    <div class="login">
-        <form>
-            <h3>Login</h3>
-            <div class="form-group">
-                <label>Email</label>
-                <input type="email" class="form-control" placeholder="Email">
-            </div>
-            <div class="form-group">
-                <label>Password</label>
-                <input type="password" class="form-control" placeholder="Password">
-            </div>
-            <button type="submit" class="btn btn-primary btn-block">Login</button>
-            <p class="forgot-password text-right mt-2 mb-4">
-                <router-link to="/forgot-password">Forgot password ?</router-link>
-            </p>
-            <div class="social-icons">
-                <ul>
-                    <li><a href="#"><i class="fa fa-google"></i></a></li>
-                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                </ul>
-            </div>
-        </form>
-    </div>
-</template>
-<script>
-    export default {
-        name:'Log-In'
-    }
-</script>
-<style>
-    
-</style> -->
 <template>
-  <div class="row justify-content-md-center">
-    <div class="col-md-6">
-      <div class="card">
-        <div class="card-header">Login</div>
-        <div class="card-body">
-          <form>
-            <div class="form-group">
-              <label for="email">Email address</label>
-              <input type="email" class="form-control" placeholder="Email..">
+    <Leftside />
+    <v-container style="justify-content: center; width: 800px; height: 649px;">
+        <div class="row justify-content-md-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">Login Khusus Admin</div>
+                    <v-form v-model="valid" ref="form" lazy-validation>
+                        <v-container>
+                            <v-row>
+                                <v-col>
+                                    <v-text-field v-model="email" :rules="emailRules" label="E-mail" required>
+                                    </v-text-field>
+                                </v-col>
+                            </v-row>
+                            <v-row>
+                                <v-col>
+                                    <v-text-field v-model="password" :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+                                        :rules="[rules.required]" :type="show1 ? 'text' : 'password'" label="Password"
+                                        counter @click:append="show1 = !show1"></v-text-field>
+                                </v-col>
+                            </v-row>
+                        </v-container>
+                    </v-form>
+                    <v-btn :disabled="!valid" color="success" class="mr-4" @click="validate()">
+                        Login
+                    </v-btn>
+                </div>
             </div>
-            <div class="form-group">
-              <label for="password">Password</label>
-              <input type="password" class="form-control" placeholder="Password..">
-            </div>
-            <router-link to="/Beranda" class="menus" @click="beranda()">
-            <button type="submit" class="btn btn-primary">Submit</button>
-              </router-link>
-            <div class="social-icons d-flex mt-3 gap-4 justify-center">
-              
-                  <i class="fa fa-google" aria-hidden="true"></i>
-                  <i class="fa fa-facebook"></i>
-                  <i class="fa fa-twitter"></i>
-              </div>
-
-          </form>
         </div>
-      </div>
-    </div>
-  </div>
+    </v-container>
 </template>
 
 <script>
+import Leftside from "../components/LeftSide.vue"
+
 export default {
-methods: {
-beranda() {
-  if (this.items.length < 3) {
-    this.items.push('Beranda')
-  }
-  else {
-    this.items.shift()
-    this.items.push('Beranda')
-  }
-}}}
+
+    components: {
+        Leftside
+    },
+
+    data: () => ({
+        items: [
+            'Dashboard',
+            'Login (Admin)'],
+        valid: false,
+        email: '',
+        emailRules: [
+            v => !!v || 'E-mail is required',
+            v => /.+@.+/.test(v) || 'E-mail must be valid',
+        ],
+        show1: false,
+        rules: {
+            required: value => !!value || 'Required.'
+        }
+    }),
+
+    methods: {
+        validate() {
+            window.location.href = "/Beranda"
+        }
+    }
+}
 </script>
