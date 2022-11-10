@@ -50,13 +50,13 @@
             <router-link to="/Beranda" class="menus" @click="beranda()">
             <button type="submit" class="btn btn-primary">Submit</button>
               </router-link>
-            <div class="social-icons">
-              <ul>
-                  <li><a href="#"><i class="fa fa-google"></i></a></li>
-                  <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                  <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-              </ul>
-          </div>
+            <div class="social-icons d-flex mt-3 gap-4 justify-center">
+              
+                  <i class="fa fa-google" aria-hidden="true"></i>
+                  <i class="fa fa-facebook"></i>
+                  <i class="fa fa-twitter"></i>
+              </div>
+
           </form>
         </div>
       </div>
@@ -76,5 +76,4 @@ beranda() {
     this.items.push('Beranda')
   }
 }}}
-
 </script>
