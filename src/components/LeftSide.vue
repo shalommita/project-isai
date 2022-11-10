@@ -24,11 +24,26 @@
                     <br>Khusus Admin
                 </v-list-item>
             </router-link>
-            
+            <div id="app">
+                <v-app id="inspire" :dark="setTheme">
+                    <v-container>
+                        <v-switch :label="`Dark Theme`" v-model="goDark"></v-switch>
+                    </v-container>
+                </v-app>
+            </div>
         </v-list>
     </v-navigation-drawer>
     <!-- Isi Konten -->
-
+    <v-main>
+        <!-- Breadcrumbs -->
+        <!-- <v-breadcrumbs :items="items">
+            <template v-slot:divider>
+                <v-icon icon="mdi-chevron-right"></v-icon>
+            </template>
+        </v-breadcrumbs> -->
+        <!-- Konten Utama -->
+        <router-view />
+    </v-main>
 
 </template>
 
@@ -39,6 +54,7 @@ export default {
         items: [
         ]
     }),
+    
 }
 </script>
 
