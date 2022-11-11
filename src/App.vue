@@ -4,15 +4,15 @@
   </v-app>
 </template>
 
+
 <script>
 import Dashboard from './components/MenuDashboard.vue'
+import auth from './store/auth';
 export default {
   name: 'App',
   components: {
     Dashboard
   },
-  data: () => ({
-    //
-  }),
+  auth,
 }
 </script>

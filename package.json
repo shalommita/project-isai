@@ -22,6 +22,7 @@
     "vue-sidebar-menu-akahon": "^0.1.4",
     "vue3-keypress": "^4.0.1",
     "vuetify": "^3.0.0-beta.0",
+    "vuex": "^4.0.2",
     "webfontloader": "^1.0.0"
   },
   "devDependencies": {

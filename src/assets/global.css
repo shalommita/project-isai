@@ -1,0 +1,7 @@
+.dark-mode{
+    background-color: brown;
+}
+
+.v-navigation-drawer__content {
+    overflow: hidden;
+}

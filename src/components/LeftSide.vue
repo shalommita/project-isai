@@ -1,6 +1,6 @@
 <template>
     <!-- Side Bar Menu -->
-    <v-navigation-drawer class="bg-blue-lighten-1" expand-on-hover rail location="left">
+    <v-navigation-drawer :class=" goDark ? 'dark-mode' : 'bg-blue-lighten-1'"  expand-on-hover rail location="left">
         <!-- Logo Menu ISAI -->
         <v-list class="list">
             <v-list-item class="bg-blue-lighten-3">
@@ -27,7 +27,7 @@
             <div id="app">
                 <v-app id="inspire" :dark="setTheme">
                     <v-container>
-                        <v-switch :label="`Dark Theme`" v-model="goDark"></v-switch>
+                        <v-switch :label="`Dark Theme`" flat v-model="goDark" color="primary"></v-switch>
                     </v-container>
                 </v-app>
             </div>
@@ -48,17 +48,29 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+import { mapState } from 'vuex'
 
-export default {
-    data: () => ({
-        items: [
-        ]
-    }),
-    
-}
+  export default {
+    data () {
+      return {
+          goDark: false,
+        items: [],
+      }
+    },
+    computed: mapState([
+        'darkMode'
+    ]),
+    methods:{
+        ...mapActions({
+            darkModeSystem: 'darkModeSystem'
+        })
+    }
+  }
 </script>
 
 <style>
+
 .menus {
     text-decoration: none;
     color: white;
