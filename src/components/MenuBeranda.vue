@@ -1,6 +1,5 @@
 <template>
-    <Leftside />
-    <v-container style="justify-content: center; width: 800px; height: 649px;">
+    <v-container style="width: 800px; height: 649px;">
         <v-breadcrumbs :items="items">
             <template v-slot:divider>
                 <v-icon icon="mdi-chevron-right"></v-icon>
@@ -18,6 +17,8 @@
                     meningkatkan taraf hidup masyarakat, terutama para petani.
                 </p>
             </v-col>
+        </v-row>
+        <v-row class="text-center">
             <v-col>
                 <h1>Contact Us</h1>
                 <p>
@@ -42,19 +43,40 @@
 </template>
 
 <script>
-import Leftside from "../components/LeftSide.vue"
 
 export default {
     name: 'v-container',
-
-    components: {
-        Leftside
-    },
-
+    auto_interval: 2000,
     data: () => ({
         items: [
             'Dashboard',
-            'Beranda']
-    })
+            'Beranda'],
+        playing: true,
+        partners: [
+            {imgSrc: "https://beehivedrones.com/wp-content/uploads/2021/09/4.png"},
+            {imgSrc: "https://beehivedrones.com/wp-content/uploads/2021/09/5.png"},
+            {imgSrc: "https://beehivedrones.com/wp-content/uploads/2021/09/6.png"}
+        ],
+        currentIndex: 0
+    }),
+    methods: {
+        // setAutoRoll(){
+        //     let vueSelf = this;
+        //     timer = setInterval(function() {
+        //         vueSelf.addIndex();
+        //     }, this.auto_interval);
+        // },
+        // addIndex() {
+        //     let newIndex = this.currentIndex + 1;
+        //     this.currentIndex = newIndex === this.bannerList.length ? 0 : newIndex;
+        // },
+        // roll(direction) {
+        //     let diff = direction === "prev" ? -1 : 1;
+        //     this.currentIndex = this.getTargetIndex(diff);
+        //     if(this.playing) {
+        //         clearInterval(timer);
+        //         this.setAutoRoll();
+        // }
+    },
 }
 </script>

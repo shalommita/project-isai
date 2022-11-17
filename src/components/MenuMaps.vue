@@ -1,20 +1,23 @@
 <template>
-    <Leftside/>
-    <v-container>
-        <!-- filter -->
-        
+    <v-container style="width: 800px; height: 649px;">
+        <v-breadcrumbs :items="items">
+            <template v-slot:divider>
+                <v-icon icon="mdi-chevron-right"></v-icon>
+            </template>
+        </v-breadcrumbs>
     </v-container>
 </template>
 
-
-
 <script>
-import Leftside from "../components/LeftSide.vue"
 
 export default {
-
     components: {
-        Leftside
-    }
+        
+    },
+    data: () => ({
+        items: [
+            'Dashboard',
+            'Maps']
+    })
 }
 </script>

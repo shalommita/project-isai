@@ -1,5 +1,4 @@
 <template>
-    <Leftside />
     <v-container style="width: 800px; height: 649px;">
         <v-breadcrumbs :items="items">
             <template v-slot:divider>
@@ -100,12 +99,11 @@
 </template>
 
 <script>
-import Leftside from "../components/LeftSide.vue"
 
 export default {
 
     components: {
-        Leftside
+        
     },
 
     data: () => ({
