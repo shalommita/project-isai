@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app :class=" $store.state.goDark ? 'dark-mode' : 'bg-white'">
     <Dashboard/>
   </v-app>
 </template>

@@ -1,6 +1,6 @@
 <template>
     <!-- Side Bar Menu -->
-    <v-navigation-drawer :class=" goDark ? 'dark-mode' : 'bg-blue-lighten-1'"  expand-on-hover rail location="left">
+    <v-navigation-drawer :class=" $store.state.goDark ? 'dark-mode' : 'bg-blue-lighten-1'"  expand-on-hover rail location="left">
         <!-- Logo Menu ISAI -->
         <v-list class="list">
             <v-list-item class="bg-blue-lighten-3">
@@ -21,13 +21,13 @@
             </router-link>
             <router-link to="/Login" class="menus" @click="login()">
                 <v-list-item prepend-icon="mdi-account-edit" value="Login">Login
-                    <br>Khusus Admin
+                    <br>Khusus Admin 
                 </v-list-item>
             </router-link>
             <div id="app">
                 <v-app id="inspire" :dark="setTheme">
                     <v-container>
-                        <v-switch :label="`Dark Theme`" flat v-model="goDark" color="primary"></v-switch>
+                        <v-switch :label="`Dark Theme`" flat v-model="$store.state.goDark" color="primary"></v-switch>
                     </v-container>
                 </v-app>
             </div>
@@ -48,9 +48,6 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
-import { mapState } from 'vuex'
-
   export default {
     data () {
       return {
@@ -58,14 +55,6 @@ import { mapState } from 'vuex'
         items: [],
       }
     },
-    computed: mapState([
-        'darkMode'
-    ]),
-    methods:{
-        ...mapActions({
-            darkModeSystem: 'darkModeSystem'
-        })
-    }
   }
 </script>
 
