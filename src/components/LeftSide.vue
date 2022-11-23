@@ -15,31 +15,20 @@
     <v-divider class="menus"></v-divider>
     <!-- Konten Menu -->
     <v-list nav>
-      <router-link to="/Beranda" class="menus" @click="beranda()">
+      <router-link to="/Beranda" class="menus">
         <v-list-item prepend-icon="mdi-home" value="beranda"
-          >Beranda</v-list-item>
+          >Beranda</v-list-item
+        >
       </router-link>
-      <div>
-        <b-dropdown id="dropdown-1" text="Dropdown Button" class="m-md-2">
-          <b-dropdown-item>
-            <router-link to="/Maps" class="menus" @click="maps()">
-              <v-list-item prepend-icon="mdi-map" value="maps">Maps</v-list-item>
-            </router-link>
-          </b-dropdown-item>
-          <!-- Utk grafik -->
-          <b-dropdown-item>
-            <router-link to="/TimeLineChart" class="menus" @click="TimeLineChart()">
-              <v-list-item prepend-icon="mdi-map" value="maps">Maps</v-list-item>
-            </router-link>
-          </b-dropdown-item>
-        </b-dropdown>
-      </div>
-      <router-link to="/Bantuan" class="menus" @click="bantuan()">
+      <router-link to="/Maps" class="menus">
+        <v-list-item prepend-icon="mdi-map" value="maps">Maps</v-list-item>
+      </router-link>
+      <router-link to="/Bantuan" class="menus">
         <v-list-item prepend-icon="mdi-help-circle" value="bantuan"
           >Bantuan</v-list-item
         >
       </router-link>
-      <router-link to="/Login" class="menus" @click="login()">
+      <router-link to="/Login" class="menus">
         <v-list-item prepend-icon="mdi-account-edit" value="Login"
           >Login</v-list-item
         >
@@ -49,8 +38,6 @@
 </template>
 
 <script>
-import TimeLineChart from './TimeLineChart.vue';
-
 export default {
   data: () => ({
     items: [],

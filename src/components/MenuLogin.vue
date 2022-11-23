@@ -103,7 +103,7 @@ const signInWithGoogle = () => {
   signInWithPopup(auth, provider)
   .then(result =>{
     const user = auth.currentUser;
-    if (user.email === "imanuel.vicky@ti.ukdw.ac.id" || user.email === "imanuelvs19@gmail.com"){
+    if (user.email === "imanuel.vicky@ti.ukdw.ac.id"){
       localStorage.setItem('authenticated', true);
       router.push("/Admin_Page");
     }else{

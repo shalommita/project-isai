@@ -52,31 +52,9 @@ export default {
             'Dashboard',
             'Beranda'],
         playing: true,
-        partners: [
-            {imgSrc: "https://beehivedrones.com/wp-content/uploads/2021/09/4.png"},
-            {imgSrc: "https://beehivedrones.com/wp-content/uploads/2021/09/5.png"},
-            {imgSrc: "https://beehivedrones.com/wp-content/uploads/2021/09/6.png"}
-        ],
-        currentIndex: 0
     }),
     methods: {
-        // setAutoRoll(){
-        //     let vueSelf = this;
-        //     timer = setInterval(function() {
-        //         vueSelf.addIndex();
-        //     }, this.auto_interval);
-        // },
-        // addIndex() {
-        //     let newIndex = this.currentIndex + 1;
-        //     this.currentIndex = newIndex === this.bannerList.length ? 0 : newIndex;
-        // },
-        // roll(direction) {
-        //     let diff = direction === "prev" ? -1 : 1;
-        //     this.currentIndex = this.getTargetIndex(diff);
-        //     if(this.playing) {
-        //         clearInterval(timer);
-        //         this.setAutoRoll();
-        // }
+        // 
     },
 }
 </script>
