@@ -1,28 +1,30 @@
 <template>
-    <v-container style="width: 900px; height: 649px;">
+    <v-container style="width: 100%; height: 100%;">
         <v-breadcrumbs :items="items">
             <template v-slot:divider>
                 <v-icon icon="mdi-chevron-right"></v-icon>
             </template>
         </v-breadcrumbs>
-        <maps/>
-        <!-- <Visualpage/> -->
+        <v-col>
+            <h1>
+                <v-icon icon="mdi-map"></v-icon> Maps
+            </h1>
+        </v-col>
+        <Maps />
     </v-container>
 </template>
 
 <script>
-// import Visualpage from "./VisualPage.vue"
-import maps from "./FullMaps.vue"
+import Maps from "./FullMaps.vue"
 
 export default {
     components: {
-        // Visualpage,
-        maps
+        Maps
     },
     data: () => ({
         items: [
             'Dashboard',
             'Maps']
-    })
+    }),
 }
 </script>
