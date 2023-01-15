@@ -6,9 +6,9 @@
             </template>
         </v-breadcrumbs>
         <v-col>
-            <h1>
+            <h2>
                 <v-icon icon="mdi-map"></v-icon> Maps
-            </h1>
+            </h2>
         </v-col>
         <Maps />
     </v-container>

@@ -21,7 +21,8 @@
       </v-col>
     </v-row>
     <div style="display: flex; justify-content: center; margin-top: 20px;">
-      <v-table style="border: 1px solid; border-radius: 5px;">
+      <v-table fixed-header height="450px" style="border-radius: 5px; box-shadow: 0 3px 10px rgb(0 0 0 / 0.5);
+    border-radius: 6px;">
         <thead>
           <tr>
             <th>Kode</th>
@@ -102,7 +103,8 @@ export default {
 
       console.log(this.uuid);
       console.log(this.date);
-      axios
+      if(window.confirm('Apakah data benar akan di hapus?')){
+        axios
         .post('https://nl227f95td.execute-api.us-east-1.amazonaws.com/dpl/maps/delete', {
           uuid: this.uuid,
           date: this.date,
@@ -111,9 +113,11 @@ export default {
           console.log(this.error)
         }).then((resp) => {
           console.log(resp.data),
-          window.alert('Data berhasil dihapus'),
           location.reload()
         })
+      } else {
+        location.reload()
+      }
     }
   },
   mounted() {

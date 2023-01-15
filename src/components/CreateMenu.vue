@@ -21,7 +21,7 @@
             </v-col>
         </v-row>
 
-        <FormCreate />
+        <FormCreate/>
 
     </v-container>
 </template>

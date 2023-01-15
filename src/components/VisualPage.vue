@@ -6,28 +6,16 @@
       </template>
     </v-breadcrumbs>
     <v-col>
-      <h1>
-        <v-icon icon="mdi-chart-line"></v-icon> Report Perkembangan Karbon
-      </h1>
+      <h2>
+        <v-icon icon="mdi-chart-line"></v-icon> Grafik Perkembangan Karbon Titik
+      </h2>
     </v-col>
-    <v-card class="wrapper_color_bg" elevation="20" height="580" width="900"
-      style="margin-top: -6px; padding-top: 20px;">
+    <v-card class="wrapper_color_bg" elevation="20" width="900" style="margin-top: -6px;">
       <v-table density="compact">
         <thead>
           <tr>
-            <th class="wrapper_color_bg">
-              <v-select v-model='hst' class="down" :items="periode" label="HST" outlined variant="solo" dense
-                style="width: 200px;">
-              </v-select>
-            </th>
-            <th class="wrapper_color_bg">
-              <v-select v-model='com' class="down" :items="comodity" label="Komoditas" outlined variant="solo" dense
-                style="width: 200px;">
-              </v-select>
-            </th>
-            <th class="wrapper_color_bg">
-              <v-btn @click="loadFilter">Apply Filter</v-btn>&nbsp;
-              <v-btn @click="deleteFilter">Reset Filter</v-btn>
+            <th class="wrapper_color_bg" style="padding: 20px;">
+              <h4 v-html="titik" style="background-color: white; text-align: center; border-radius: 5px;"></h4>
             </th>
           </tr>
         </thead>
@@ -39,79 +27,42 @@
   </v-container>
 </template>
 
-<style>
-.wrapper_color_bg {
-  background-color: #134280;
-}
-
-.bg_konten {
-  background-color: white;
-}
-</style>
-
 <script>
 import Chart from 'chart.js'
 import datatrenChartData from '../data/datatren.js'
 import axios from 'axios'
-
 export default {
   /* eslint-disable */
   name: 'datatren',
   data() {
     return {
-      hst: sessionStorage.getItem('hst'),
-      com: sessionStorage.getItem('com'),
       periode: [
-        '', 'HST 1', 'HST 2', 'HST 3',
+        'HST 1', 'HST 2', 'HST 3',
       ],
-      comodity: [
-        '', 'Padi', 'Cabai', 'Kentang'
+      years: [
+        '2022'
       ],
       datatrenChartData: datatrenChartData,
       items: [
         'Dashboard',
-        'Report Page']
-    }
-  },
-  methods: {
-    loadFilter() {
-      sessionStorage.setItem('hst', this.hst);
-      sessionStorage.setItem('com', this.com);
-      location.reload();
-    },
-    deleteFilter() {
-      sessionStorage.setItem('hst', '');
-      sessionStorage.setItem('com', '');
-      location.reload();
+        'Report Page Per Titik'],
+      titik: this.$route.params.id,
     }
   },
   mounted() {
+    var titik = this.$route.params.id;
     var hst = this.hst;
-    var com = this.com;
     const ctx = document.getElementById('data-tren');
-    axios.get('https:nl227f95td.execute-api.us-east-1.amazonaws.com/dpl/maps').
+    axios.get('https://nl227f95td.execute-api.us-east-1.amazonaws.com/dpl/maps/all2').
       then(function (response) {
-        var label = []
+        var label = [];
         var karbonTanah = [];
         var karbonTanaman = [];
-        const data = response.data.body.features
-        for (let i = 0; i < data.length; i++) {
-          if (data[i].properties.hst == hst && data[i].properties.comodity == com) {
-            label.push(data[i].properties.titik_sample);
-            karbonTanah.push(data[i].properties.karbon_tanah);
-            karbonTanaman.push(data[i].properties.karbon_tanaman);
-          } else if (hst == '' && data[i].properties.comodity == com) {
-            label.push(data[i].properties.titik_sample);
-            karbonTanah.push(data[i].properties.karbon_tanah);
-            karbonTanaman.push(data[i].properties.karbon_tanaman);
-          } else if (com == '' && data[i].properties.hst == hst) {
-            label.push(data[i].properties.titik_sample);
-            karbonTanah.push(data[i].properties.karbon_tanah);
-            karbonTanaman.push(data[i].properties.karbon_tanaman);
-          } else if (hst == '' && com == '') {
-            label.push(data[i].properties.titik_sample);
-            karbonTanah.push(data[i].properties.karbon_tanah);
-            karbonTanaman.push(data[i].properties.karbon_tanaman);
+        for (let i = 0; i < response.data.body[titik].length; i++) {
+          if (i<=10){
+            label.push(response.data.body[titik][i].date_pretty);
+            karbonTanah.push(response.data.body[titik][i].karbon_tanah);
+            karbonTanaman.push(response.data.body[titik][i].karbon_tanaman);
           }
         }
         return [label, karbonTanah, karbonTanaman];
@@ -121,3 +72,17 @@ export default {
   }
 }
 </script>
+
+<style>
+.wrapper_color_bg {
+  background-color: #134280;
+}
+
+.right {
+  float: right;
+}
+
+.bg_konten {
+  background-color: white;
+}
+</style>

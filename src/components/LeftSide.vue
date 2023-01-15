@@ -19,7 +19,7 @@
       <router-link to="/bantuan" class="menus">
         <v-list-item prepend-icon="mdi-help-circle" value="bantuan">Bantuan</v-list-item>
       </router-link>
-      <router-link to="/visual_page" class="menus">
+      <router-link to="/main_graph" class="menus">
         <v-list-item prepend-icon="mdi-chart-line" value="grafik">Report Page</v-list-item>
       </router-link>
       <router-link to="/kalkulisai" class="menus">
